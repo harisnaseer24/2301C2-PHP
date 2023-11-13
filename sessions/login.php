@@ -8,7 +8,7 @@ session_start();
 <body>
     <h1 class="text-center display-3 my-2 ">Login Now</h1>
     <div class="container">
-    <form action="login.php" method="post">
+    <form class="col-md-5 mx-auto  form-group"action="login.php" method="post">
 
         <input class="form-control" type="text" name="username" id="username" placeholder="Enter username"><br>
         <input class="form-control" type="password" name="password" id="password" placeholder="Enter password"><br>
