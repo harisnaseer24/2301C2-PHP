@@ -32,7 +32,7 @@ $encrypted_password=password_hash($password, PASSWORD_BCRYPT);
 
 //to check if a user already exists
 
-$check="SELECT * FROM `user` WHERE email='$email';";
+$check="SELECT * FROM `users` WHERE email='$email';";
 $result=mysqli_query($connection, $check);
 if($result){
     if(mysqli_num_rows($result) >0){
@@ -40,7 +40,7 @@ if($result){
     }
     else{
 //to insert a new user
-$add="INSERT INTO `user`( `username`, `email`, `password`) VALUES ('$username','$email','$encrypted_password');";
+$add="INSERT INTO `users`( `username`, `email`, `password`) VALUES ('$username','$email','$encrypted_password');";
 $result2=mysqli_query($connection, $add);
 if($result2){
     header("location: login.php");
