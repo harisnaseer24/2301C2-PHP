@@ -12,6 +12,7 @@ require "../essentials/config.php";
    
     <input type="email" name="loginemail" id="" class="form-control my-2" placeholder="Enter email">
     <input type="password" name="loginpassword" id="" class="form-control my-2" placeholder="Enter password">
+    <a href="forgetpass.php">Forgot your password..?</a>
     <input type="submit" name="signin" id="" class="form-control btn btn-primary my-2">
     </form>
 </div> 
