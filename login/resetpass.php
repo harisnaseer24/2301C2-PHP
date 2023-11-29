@@ -18,7 +18,6 @@ if(isset($_GET['email'])){
     $email="";
 }
 
-
     $query="SELECT * FROM `users` WHERE email='$email' AND recovery_token='$token';";
     $result=mysqli_query($connection, $query) or die("failed to login");
     if(mysqli_num_rows($result) > 0){
