@@ -1,5 +1,6 @@
 <?php 
 require("../essentials/config.php");
+
 $id=$_POST['id'];
 $uname=$_POST['uname'];
 $email=$_POST['email'];
@@ -9,7 +10,8 @@ if(!$uname=="" && !$email=="" && !$pass=="" ){
 
 
 
-$sql="INSERT INTO `user_info`(`id`, `name`, `email`, `password`) VALUES ('$id','$uname','$email','$pass')";
+$sql="INSERT INTO `user_info`(`id`, `name`, `email`, `password`) VALUES ('$id','$uname','$email','$pass') 
+ON DUPLICATE KEY UPDATE `name`='$uname',`email`='$email',`password`='$pass';";
 $result=mysqli_query($connection, $sql) or die("failed");
 
 if(!$result){
@@ -19,7 +21,7 @@ if(!$result){
 } 
 
 } else{
-   echo "<script>alert('Please fill all fields.')</script>";
+   echo "Please fill all fields.";
 }
 ?>
 

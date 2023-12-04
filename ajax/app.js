@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   form = $("#form");
   tablebody = $("#tab");
   id = $("#id");
@@ -7,7 +8,8 @@ $(document).ready(function () {
   email = $("#email");
   btn = $("#btn");
 
-  function getdata() {
+  function getdata(){
+
     $.ajax({
       method: "POST",
       url: "fetch.php",
@@ -17,6 +19,7 @@ $(document).ready(function () {
     });
   }
   getdata();
+
   btn.on("click", function (e) {
     e.preventDefault();
     $.ajax({
@@ -35,4 +38,46 @@ $(document).ready(function () {
       },
     });
   });
+
+
+
+//trash
+$('tbody').on('click',' .deletebtn', function(){
+ let userid=$(this).attr('data-id');
+  console.log(userid);
+  $.ajax({
+    method: "POST",
+    url: "delete.php",
+    data: {
+      userid: userid
+    },
+    success: function (data) {
+      alert(data);
+      getdata();
+    },
+  });
+});
+
+//update
+$('tbody').on('click',' .updatebtn', function(){
+  let userid=$(this).attr('data-id');
+  
+   $.ajax({
+     method: "POST",
+     url: "update.php",
+     data: {
+       userid: userid  
+     },
+     success: function (data) {
+       let record=JSON.parse(data);
+       console.log(record.name)
+       id.val(record.id)
+       uname.val(record.name)
+       email.val(record.email)
+       pass.val(record.password)
+     
+     },
+   });
+ });
+
 });
