@@ -5,7 +5,8 @@ require "../essentials/config.php";
 if(isset($_POST['submit'])){
 
  $name=$_POST['name'];
-$age=$_POST['age'];
+$price=$_POST['price'];
+$category_id=$_POST['category'];
 // echo "<pre>";
 // print_r($_FILES);
 // echo "</pre>";
@@ -38,14 +39,14 @@ $validExtensions=['jpg','png','jpeg'];
  move_uploaded_file($tmpname,"image/".$newimgname);
 
 
-$sql="INSERT INTO `users`( `name`, `age`, `image`) VALUES ('$name','$age','$newimgname');";
+$sql="INSERT INTO `product`( `name`, `price`, `image`, `category_id`) VALUES ('$name','$price','$newimgname','$category_id');";
 $result=mysqli_query($connection,$sql);
 
 if($result){
-    echo"<script>alert('User Added.')</script>";
+    echo"<script>alert('Product Added.')</script>";
 }
 else{
-    echo"<script>alert('failed to add a new user.')</script>";
+    echo"<script>alert('failed to add a new product.')</script>";
 }
 
  }
@@ -57,10 +58,32 @@ else{
 <body>
     
 <div class="container">
-    <h1 class="text-center">Add User</h1>
+    <h1 class="text-center">Add product</h1>
     <form action="" class="form-group" method="post" enctype="multipart/form-data">
 <input type="text" name="name" class="form-control my-3" placeholder="Enter name">
-<input type="number" name="age" class="form-control my-3" placeholder="Enter age">
+<input type="number" name="price" class="form-control my-3" placeholder="Enter price">
+<select name="category" class="form-control my-3"  id="">
+    <option value="0" selected disabled>Choose category</option>
+<?php 
+$getcategories="SELECT * from category;";
+$getcategories_run=mysqli_query($connection, $getcategories) or die("failed");
+if(mysqli_num_rows($getcategories_run) > 0){
+    while($category=mysqli_fetch_assoc($getcategories_run)){
+?>
+<option value="<?=$category['category_id']?>"><?=$category['category_name']?></option>
+
+<?php 
+
+    }
+}
+
+
+
+
+?>
+
+
+</select>
 <input type="file" name="image" class="form-control my-3" accept=".jpg,.png,.jpeg">
 <input type="submit" name="submit" value="Add User" class="form-control btn btn-info my-3" >
 
