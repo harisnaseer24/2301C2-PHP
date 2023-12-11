@@ -20,6 +20,7 @@ include("nav.php");
 </style>
 <!-- button for categories -->
 <div class="container my-5">
+<h1 class='text-center my-5 text-primary display-4'>Welcome to Code HN</h1>
     <div class="text-center">
     <a href="index.php" class="btn btn-outline-primary  mx-3">ALL</a>
     <?php 
@@ -46,7 +47,7 @@ if(isset($_GET['cat_id'])){
     ?>
     <div class="col-lg-4 col-md-6 col-sm-12 my-3">
     <div class="card" style="border:none">
-      <img src="../file upload/image/<?=$product['image']?>" class="card-img-top" alt="..." height="500">
+      <img src="./image/<?=$product['image']?>" class="card-img-top" alt="..." height="500">
       <div class="card-body">
         <h5 class="card-title"><?=$product['name']?></h5>
         <p class="card-text"><?=$product['category_name']?></p>
@@ -54,8 +55,7 @@ if(isset($_GET['cat_id'])){
       </div>
     </div>
     </div>
-<?php     
-        }}
+<?php    }}    
 }else{
     $getAllProducts="SELECT * from product;";
 $getAllProducts_run=mysqli_query($connection, $getAllProducts) or die("failed");
@@ -64,7 +64,7 @@ if(mysqli_num_rows($getAllProducts_run) > 0){
 ?>
 <div class="col-lg-4 col-md-6 col-sm-12 my-3">
 <div class="card" style="border:none">
-  <img src="../file upload/image/<?=$product['image']?>" class="card-img-top" alt="..." height="500">
+  <img src="./image/<?=$product['image']?>" class="card-img-top" alt="..." height="500">
   <div class="card-body">
     <h5 class="card-title"><?=$product['name']?></h5>
     <a href="#" class="btn btn-outline-primary"><?=$product['price']?></a>
