@@ -59,7 +59,7 @@ else{
 <body>
     
 <div class="container mt-5" style="min-height:80vh;">
-    <h1 class="text-center mt-5 text-primary">Add product</h1>
+    <h1 class="text-center mt-5 text-primary display-3">Add product</h1>
     <form action="" class="form-group" method="post" enctype="multipart/form-data">
 <input type="text" name="name" class="form-control my-3" placeholder="Enter name">
 <input type="number" name="price" class="form-control my-3" placeholder="Enter price">
