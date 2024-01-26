@@ -58,7 +58,7 @@ if(isset($_GET['cat_id'])){
     </div>
 <?php    }}    
 }else{
-    $getAllProducts="SELECT * from product;";
+    $getAllProducts="SELECT * from product limit 3;";
 $getAllProducts_run=mysqli_query($connection, $getAllProducts) or die("failed");
 if(mysqli_num_rows($getAllProducts_run) > 0){
     while($product=mysqli_fetch_assoc($getAllProducts_run)){
@@ -86,7 +86,7 @@ if(mysqli_num_rows($getAllProducts_run) > 0){
 <div class="container my-5">
 <h1 class='text-center my-5 text-primary display-4'>DISCOUNTS</h1>
     <div class="text-center">
-    <a href="index.php" class="btn btn-outline-primary  mx-3">ALL</a>
+    <a href="index.php#discount" class="btn btn-outline-primary  mx-3">ALL</a>
     <?php 
 $discount="SELECT * from discount;";
 $discount_run=mysqli_query($connection, $discount) or die("failed");
@@ -99,7 +99,7 @@ if(mysqli_num_rows($discount_run) > 0){
 }
 ?>
 </div>
-<div class="row">
+<div class="row" id="discount">
 <?php 
 if(isset($_GET['disc_id'])){
     $discount_id=$_GET['disc_id'];
@@ -121,7 +121,7 @@ if(isset($_GET['disc_id'])){
     </div>
 <?php    }}    
 }else{
-    $getAllProducts="SELECT * FROM `product` p inner join `discount` d on p.discount_id=d.discount_id ORDER by p.id desc;";
+    $getAllProducts="SELECT * FROM `product` p inner join `discount` d on p.discount_id=d.discount_id ORDER by p.id desc limit 3;";
 $getAllProducts_run=mysqli_query($connection, $getAllProducts) or die("failed");
 if(mysqli_num_rows($getAllProducts_run) > 0){
     while($product=mysqli_fetch_assoc($getAllProducts_run)){
